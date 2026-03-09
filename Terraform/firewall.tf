@@ -1,6 +1,6 @@
 #Security Group
 resource "aws_security_group" "tf_firewall" {
-  name        = "tf-firewall"
+  name        = var.sg_name
   description = "This firewall is managed by Terraform"
   # vpc_id      = var.vpc_id
 }
