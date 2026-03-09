@@ -1,6 +1,6 @@
 #users
 variable "username" {
-  type = string
+  type = list(string)
 }
 
 #firewall
@@ -21,6 +21,9 @@ variable "ssh_port" {
 }
 
 #ec2Instance
+variable "instance_name" {
+  type = list(string)
+}
 variable "ami_id" {
   type = string
 }
