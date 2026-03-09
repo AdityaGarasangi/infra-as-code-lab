@@ -30,3 +30,6 @@ variable "instance_type" {
 variable "region" {
   type = string
 }
+variable "instance_count" {
+  type = number
+}

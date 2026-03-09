@@ -4,7 +4,9 @@ resource "aws_instance" "webServers" {
   vpc_security_group_ids = [aws_security_group.tf_firewall.id]
   region = var.region
 
+  count = var.instance_count #Count-Meta-Argument
+
   tags = {
-    name = "Web-Server"
+    name = "Web-Server-${count.index}"
   }
 }
