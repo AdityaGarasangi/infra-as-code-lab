@@ -21,15 +21,18 @@ variable "ssh_port" {
 }
 
 #ec2Instance
+variable "env" {
+  default = "dev"
+}
 variable "instance_name" {
   type = list(string)
 }
 variable "ami_id" {
   type = string
 }
-variable "instance_type" {
+/*variable "instance_type" {
   type = string
-}
+}*/
 variable "region" {
   type = string
 }
