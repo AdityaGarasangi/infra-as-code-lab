@@ -8,5 +8,5 @@ resource "aws_iam_user_policy" "NonProd_users_policy" {
   name  = "NonProd-policy-${var.username[count.index]}"
   user  = aws_iam_user.NonProd_users[count.index].name
 
-  policy = file("./Terraform/iam-user-policy.json") #Filesystem-Function
+  policy = file("./iam-user-policy.json") #Filesystem-Function
 }
