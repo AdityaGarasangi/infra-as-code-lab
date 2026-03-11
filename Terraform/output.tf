@@ -4,7 +4,7 @@ output "public-ip" {
 
 output "Instance-Summary" {
   value = [
-    for i in aws_instance.webServers : 
+    for i in aws_instance.webServers :
     "${i.tags["name"]} has ID ${i.id} in ${var.region}"
   ]
 }
