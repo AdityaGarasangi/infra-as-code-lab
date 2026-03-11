@@ -8,3 +8,4 @@ output "Instance-Summary" {
     "${i.tags["name"]} has ID ${i.id} in ${var.region}"
   ]
 }
+
