@@ -1,7 +1,7 @@
 resource "aws_instance" "webServers" {
   ami                    = lookup(var.ami_id, var.region) #Map-Fnction
   region                 = var.region
-  instance_type          = var.env == "dev" && var.region == "ap-south-2" ? "t3.micro" : "r5.large" #Conditional-Expression
+  instance_type          = local.instance_type
   vpc_security_group_ids = [aws_security_group.tf_firewall.id]
 
   count = length(var.instance_name) #Collection-Functions
@@ -21,7 +21,7 @@ resource "aws_instance" "webServers" {
 
 resource "aws_instance" "DataServer" {
   ami           = data.aws_ami.amazon_linux.id
-  instance_type = "t3.micro"
+  instance_type = local.instance_type
 
   tags = {
     Name = "AL-DataServer"

@@ -4,7 +4,7 @@ data "aws_ami" "amazon_linux" {
 
   filter {
     name   = "name"
-    values = ["al2023-ami-2023*-x86_64"] #Amazon Linux 2023 64-bit (x86) image
+    values = ["al2023-ami-*-x86_64"] #Latest Amazon Linux 64-bit (x86) image
   }
 
   filter {
