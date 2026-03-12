@@ -1,0 +1,43 @@
+2026-03-12T12:38:24.501+0530 [INFO]  Terraform version: 1.14.3
+2026-03-12T12:38:24.503+0530 [DEBUG] using github.com/hashicorp/go-tfe v1.94.0
+2026-03-12T12:38:24.503+0530 [DEBUG] using github.com/hashicorp/hcl/v2 v2.24.0
+2026-03-12T12:38:24.503+0530 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2026-03-12T12:38:24.503+0530 [DEBUG] using github.com/zclconf/go-cty v1.16.3
+2026-03-12T12:38:24.503+0530 [INFO]  Go runtime version: go1.25.5
+2026-03-12T12:38:24.503+0530 [INFO]  CLI args: []string{"C:\\ProgramData\\chocolatey\\lib\\terraform\\tools\\terraform.exe", "validate"}
+2026-03-12T12:38:24.507+0530 [DEBUG] Attempting to open CLI config file: C:\Users\Aditya S\AppData\Roaming\terraform.rc
+2026-03-12T12:38:24.507+0530 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2026-03-12T12:38:24.507+0530 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2026-03-12T12:38:24.507+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\Aditya S\AppData\Roaming\terraform.d\plugins
+2026-03-12T12:38:24.508+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\Aditya S\AppData\Roaming\HashiCorp\Terraform\plugins
+2026-03-12T12:38:24.508+0530 [INFO]  CLI command args: []string{"validate"}
+2026-03-12T12:38:26.709+0530 [DEBUG] checking for provisioner in "."
+2026-03-12T12:38:26.709+0530 [DEBUG] checking for provisioner in "C:\\ProgramData\\chocolatey\\lib\\terraform\\tools"
+2026-03-12T12:38:26.709+0530 [DEBUG] created provider logger: level=debug
+2026-03-12T12:38:26.709+0530 [INFO]  provider: configuring client automatic mTLS
+2026-03-12T12:38:26.720+0530 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/6.33.0/windows_amd64/terraform-provider-aws_v6.33.0_x5.exe args=[".terraform/providers/registry.terraform.io/hashicorp/aws/6.33.0/windows_amd64/terraform-provider-aws_v6.33.0_x5.exe"]
+2026-03-12T12:38:26.736+0530 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/6.33.0/windows_amd64/terraform-provider-aws_v6.33.0_x5.exe pid=16096
+2026-03-12T12:38:26.736+0530 [DEBUG] provider: waiting for RPC address: plugin=.terraform/providers/registry.terraform.io/hashicorp/aws/6.33.0/windows_amd64/terraform-provider-aws_v6.33.0_x5.exe
+2026-03-12T12:38:26.904+0530 [DEBUG] provider.terraform-provider-aws_v6.33.0_x5.exe: Starting github.com/hashicorp/terraform-provider-aws@6.33.0 (go1.25.7)...
+2026-03-12T12:38:26.904+0530 [DEBUG] provider.terraform-provider-aws_v6.33.0_x5.exe: Creating Terraform AWS Provider (SDKv2-style)...
+2026-03-12T12:38:26.950+0530 [DEBUG] provider.terraform-provider-aws_v6.33.0_x5.exe: Initializing Terraform AWS Provider (SDKv2-style)...
+2026-03-12T12:38:26.981+0530 [DEBUG] provider.terraform-provider-aws_v6.33.0_x5.exe: Creating Terraform AWS Provider (Framework-style)...
+2026-03-12T12:38:27.020+0530 [DEBUG] provider.terraform-provider-aws_v6.33.0_x5.exe: Initializing Terraform AWS Provider (Framework-style)...
+2026-03-12T12:38:27.025+0530 [INFO]  provider.terraform-provider-aws_v6.33.0_x5.exe: configuring server automatic mTLS: timestamp="2026-03-12T12:38:27.024+0530"
+2026-03-12T12:38:27.036+0530 [DEBUG] provider.terraform-provider-aws_v6.33.0_x5.exe: plugin address: address=127.0.0.1:10000 network=tcp timestamp="2026-03-12T12:38:27.036+0530"
+2026-03-12T12:38:27.042+0530 [DEBUG] provider: using plugin: version=5
+2026-03-12T12:38:28.732+0530 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2026-03-12T12:38:28.784+0530 [INFO]  provider: plugin process exited: plugin=.terraform/providers/registry.terraform.io/hashicorp/aws/6.33.0/windows_amd64/terraform-provider-aws_v6.33.0_x5.exe id=16096
+2026-03-12T12:38:28.784+0530 [DEBUG] provider: plugin exited
+2026-03-12T12:38:28.784+0530 [DEBUG] created provider logger: level=debug
+2026-03-12T12:38:28.784+0530 [INFO]  provider: configuring client automatic mTLS
+2026-03-12T12:38:28.791+0530 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/integrations/github/6.11.1/windows_amd64/terraform-provider-github_v6.11.1.exe args=[".terraform/providers/registry.terraform.io/integrations/github/6.11.1/windows_amd64/terraform-provider-github_v6.11.1.exe"]
+2026-03-12T12:38:28.808+0530 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/integrations/github/6.11.1/windows_amd64/terraform-provider-github_v6.11.1.exe pid=8788
+2026-03-12T12:38:28.808+0530 [DEBUG] provider: waiting for RPC address: plugin=.terraform/providers/registry.terraform.io/integrations/github/6.11.1/windows_amd64/terraform-provider-github_v6.11.1.exe
+2026-03-12T12:38:28.833+0530 [INFO]  provider.terraform-provider-github_v6.11.1.exe: configuring server automatic mTLS: timestamp="2026-03-12T12:38:28.832+0530"
+2026-03-12T12:38:28.855+0530 [DEBUG] provider: using plugin: version=5
+2026-03-12T12:38:28.855+0530 [DEBUG] provider.terraform-provider-github_v6.11.1.exe: plugin address: address=127.0.0.1:10000 network=tcp timestamp="2026-03-12T12:38:28.855+0530"
+2026-03-12T12:38:28.899+0530 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2026-03-12T12:38:28.907+0530 [INFO]  provider: plugin process exited: plugin=.terraform/providers/registry.terraform.io/integrations/github/6.11.1/windows_amd64/terraform-provider-github_v6.11.1.exe id=8788
+2026-03-12T12:38:28.907+0530 [DEBUG] provider: plugin exited
+2026-03-12T12:38:28.907+0530 [DEBUG] Building and walking validate graph
