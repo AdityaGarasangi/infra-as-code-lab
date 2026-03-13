@@ -1,40 +1,32 @@
-#Security Group
+# Security Group
 resource "aws_security_group" "tf_firewall" {
   name        = var.sg_name
   description = "This firewall is managed by Terraform"
-  # vpc_id      = var.vpc_id
+
+  # Inbound Rules using Dynamic Block
+  dynamic "ingress" {
+    for_each = var.sg_inbound_rules
+    iterator = inbound
+    content {
+      description = "Rule for ${inbound.key}"
+      from_port   = inbound.value.port
+      to_port     = inbound.value.port
+      protocol    = inbound.value.protocol
+      cidr_blocks = [inbound.value.cidr]
+    }
+  }
+
+  # Outbound Rules
+  egress {
+    description = "Allow all outbound traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 
 /*
-#Inound Rules for Security Group
-resource "aws_vpc_security_group_ingress_rule" "allow_https" {
-  security_group_id = aws_security_group.tf_firewall.id #Cross-Resource Attribute Reference 
-  ip_protocol = "tcp"
-  from_port   = 443
-  to_port     = 443
-  cidr_ipv4   = "0.0.0.0/0" 
-  description = "Allow HTTP from anywhere"
-}
-
-resource "aws_vpc_security_group_ingress_rule" "allow_app" {
-  security_group_id = aws_security_group.tf_firewall.id #Cross-Resource Attribute Reference 
-  ip_protocol = "tcp"
-  from_port   = 443
-  to_port     = 443
-  cidr_ipv4   = "${aws_eip.tf_lb.public_ip}/32" #Cross-Resource Attribute Reference 
-  description = "Allow HTTP from anywhere"
-}
-
-resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
-  security_group_id = aws_security_group.tf_firewall.id #Cross-Resource Attribute Reference 
-  ip_protocol = "tcp"
-  from_port   = 22
-  to_port     = 22
-  cidr_ipv4   = "${aws_eip.tf_lb.public_ip}/32" #Cross-Resource Attribute Reference 
-  description = "Allow HTTP from anywhere"
-}
-*/
-
 #Inound Rules for Security Group
 resource "aws_vpc_security_group_ingress_rule" "https" {
   security_group_id = aws_security_group.tf_firewall.id #Cross-Resource Attribute Reference
@@ -63,7 +55,6 @@ resource "aws_vpc_security_group_ingress_rule" "ssh" {
   description       = "Allow SSH from VPN static IP only"
 }
 
-
 #Outbound Rules for Security Group
 resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
   security_group_id = aws_security_group.tf_firewall.id #Cross-Resource Attribute Reference 
@@ -73,3 +64,4 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
   cidr_ipv4         = "0.0.0.0/0"
   description       = "Allow all outbound traffic"
 }
+*/

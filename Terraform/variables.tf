@@ -41,3 +41,11 @@ variable "ami_id" {
 variable "region" {
   type = string
 }
+
+variable "sg_inbound_rules" {
+  type = map(object({
+    port     = number
+    protocol = string
+    cidr     = string
+  }))
+}
