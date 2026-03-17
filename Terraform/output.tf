@@ -9,3 +9,15 @@ output "Instance-Summary" {
   ]
 }
 
+output "arns" {
+  value = aws_iam_user.NonProd_users[*].arn
+}
+
+output "name" {
+  value = aws_iam_user.NonProd_users[*].name
+}
+
+#--- ZipMap Function ---
+output "Users_Created" {
+  value = zipmap(aws_iam_user.NonProd_users[*].name, aws_iam_user.NonProd_users[*].arn) 
+}
