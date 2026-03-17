@@ -23,6 +23,7 @@ terraform.rc
 .idea/
 .DS_Store
 
+#--- Obsidian-Notes ---
 *.obsidian*
 
 !.terraform.lock.hcl
