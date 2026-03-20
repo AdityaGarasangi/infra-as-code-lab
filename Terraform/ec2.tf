@@ -14,8 +14,12 @@ resource "aws_instance" "webServers" {
     }
   )
 
+  #Lifecycle Meta-Argument
   lifecycle {
+    prevent_destroy = true
+    create_before_destroy = true
     ignore_changes = [tags["CreationDate"]]
+    replace_triggered_by = [vpc_security_group_ids]
   }
 }
 
@@ -25,5 +29,12 @@ resource "aws_instance" "DataServer" {
 
   tags = {
     Name = "AL-DataServer"
+    CreationDate = formatdate("DD MMM YYY HH:MM", timestamp())
   }
+
+  #Lifecycle Meta-Argument
+  lifecycle {
+    ignore_changes = [tags]
+  }
+
 }
