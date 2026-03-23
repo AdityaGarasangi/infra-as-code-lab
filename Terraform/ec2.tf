@@ -2,7 +2,7 @@ resource "aws_instance" "webServers" {
   ami                    = lookup(var.ami_id, var.region) #Map-Fnction
   region                 = var.region
   instance_type          = local.instance_type
-  vpc_security_group_ids = [aws_security_group.tf_firewall.id]
+  vpc_security_group_ids = [aws_security_group.tf_firewall.id] #Implicit Resource Dependency
 
   count = length(var.instance_name) #Collection-Functions
 
@@ -16,19 +16,20 @@ resource "aws_instance" "webServers" {
 
   #Lifecycle Meta-Argument
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy       = true
     create_before_destroy = true
-    ignore_changes = [tags["CreationDate"]]
-    replace_triggered_by = [vpc_security_group_ids]
+    ignore_changes        = [tags["CreationDate"]]
+    replace_triggered_by  = [vpc_security_group_ids.webServers] 
   }
 }
 
 resource "aws_instance" "DataServer" {
   ami           = data.aws_ami.amazon_linux.id
   instance_type = local.instance_type
+  depends_on    = [aws_s3_bucket.dataserver_content] #Explicit Resource Dependency
 
   tags = {
-    Name = "AL-DataServer"
+    Name         = "AL-DataServer"
     CreationDate = formatdate("DD MMM YYY HH:MM", timestamp())
   }
 

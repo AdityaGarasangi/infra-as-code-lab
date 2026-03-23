@@ -1,6 +1,6 @@
 # --- IAM Users ---
 variable "username" {
-  type = list(string)
+  type = set(string)
 }
 
 # --- Security Group / Firewall ---
@@ -15,7 +15,7 @@ variable "env" {
 }
 
 variable "instance_name" {
-  type = list(string)
+  type = set(string)
 }
 
 variable "ami_id" {

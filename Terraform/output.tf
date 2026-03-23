@@ -19,5 +19,5 @@ output "name" {
 
 #--- ZipMap Function ---
 output "Users_Created" {
-  value = zipmap(aws_iam_user.NonProd_users[*].name, aws_iam_user.NonProd_users[*].arn) 
+  value = zipmap(aws_iam_user.NonProd_users[*].name, aws_iam_user.NonProd_users[*].arn)
 }
