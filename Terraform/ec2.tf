@@ -19,7 +19,7 @@ resource "aws_instance" "webServers" {
     prevent_destroy       = true
     create_before_destroy = true
     ignore_changes        = [tags["CreationDate"]]
-    replace_triggered_by  = [vpc_security_group_ids.webServers] 
+    replace_triggered_by  = [vpc_security_group_ids.webServers]
   }
 }
 
@@ -38,4 +38,13 @@ resource "aws_instance" "DataServer" {
     ignore_changes = [tags]
   }
 
+}
+
+resource "aws_instance" "app" {
+  ami           = "ami-123456"
+  instance_type = var.server_config.instance_type
+
+  tags = {
+    Name = var.server_config.name
+  }
 }

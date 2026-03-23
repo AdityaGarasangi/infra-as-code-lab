@@ -1,7 +1,5 @@
 # --- IAM Users ---
-variable "username" {
-  type = set(string)
-}
+variable "username" {}
 
 # --- Security Group / Firewall ---
 variable "sg_name" {
@@ -14,9 +12,7 @@ variable "env" {
   default = "dev"
 }
 
-variable "instance_name" {
-  type = set(string)
-}
+variable "instance_name" {}
 
 variable "ami_id" {
   type = map(string) # Changed 'any' to 'string' for better validation
@@ -24,6 +20,15 @@ variable "ami_id" {
 
 variable "region" {
   type = string
+}
+
+#--- Data Type - Object ---
+variable "server_config" {
+  type = object({
+    name          = string
+    instance_type = string
+    volume_size   = number
+  })
 }
 
 variable "sg_inbound_rules" {

@@ -22,3 +22,10 @@ ami_id = {
 }
 instance_type = "m5.large"
 region        = "us-east-1"
+
+
+server_config {
+    name          = "app-server"
+    instance_type = "t2.micro"
+    volume_size   = 20
+}
