@@ -1,12 +1,12 @@
 resource "aws_iam_user" "NonProd_users" {
-  count = length(var.username) #Collection-Functions
-  name  = var.username[count.index]
+  for_each = toset(var.username)
+  name  = each.value
 }
 
 resource "aws_iam_user_policy" "NonProd_users_policy" {
-  count = length(var.username) #Numeric-Function
-  name  = "NonProd-policy-${var.username[count.index]}"
-  user  = aws_iam_user.NonProd_users[count.index].name
+  for_each = toset(var.username)
+  name  = "NonProd-policy-${each.value}"
+  user  = aws_iam_user.NonProd_users[each.key].name
 
-  policy = file("./iam-user-policy.json") #Filesystem-Function
+  policy = file("${path.module}/iam-user-policy.json") #Filesystem-Function
 }
