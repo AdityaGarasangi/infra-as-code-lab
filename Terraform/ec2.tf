@@ -47,4 +47,18 @@ resource "aws_instance" "app" {
   tags = {
     Name = var.server_config.name
   }
+
+  lifecycle {
+   # Pre-Condition
+    precondition {
+      condition = contains(["m5.large", "r5.xlarge"], var.server_config.instance_type)
+      error_message = "Only m5.large , r5.xlarge types are allowed"
+    }
+
+    #Post-Condition
+    postcondition {
+      condition = self.public_ip != null && self.public_ip != ""
+      error_message = "EC2 must have public IP"
+    }
+  }
 }
