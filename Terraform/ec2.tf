@@ -1,4 +1,4 @@
-resource "aws_instance" "webServers" {
+resource "aws_instance" "web_server" {
   ami                    = lookup(var.ami_id, var.region) #Map-Fnction
   region                 = var.region
   instance_type          = local.instance_type
@@ -23,7 +23,7 @@ resource "aws_instance" "webServers" {
   }
 }
 
-resource "aws_instance" "DataServer" {
+resource "aws_instance" "data_server" {
   ami           = data.aws_ami.amazon_linux.id
   instance_type = local.instance_type
   depends_on    = [aws_s3_bucket.dataserver_content] #Explicit Resource Dependency
@@ -40,7 +40,7 @@ resource "aws_instance" "DataServer" {
 
 }
 
-resource "aws_instance" "app" {
+resource "aws_instance" "appServer" {
   ami           = "ami-123456"
   instance_type = var.server_config.instance_type
 
