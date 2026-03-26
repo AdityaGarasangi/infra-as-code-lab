@@ -74,6 +74,12 @@ resource "aws_instance" "appServer" {
       echo "Started nginx in instance" >> ./result.txt
     EOT
   }
+  provisioner "local-exec" {
+    when    = destroy
+    command = "echo 'Instance was destroyed at $(date)' >> ./result.txt"
+    on_failure = continue
+  }
+
   lifecycle {
    # Pre-Condition
     precondition {
