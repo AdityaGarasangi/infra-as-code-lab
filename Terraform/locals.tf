@@ -10,3 +10,10 @@ locals {
     Environment = var.env
   }
 }
+
+locals {
+  instance_type = {
+    dev  = "t3.micro"
+    prod = "m5.large"
+  }
+}
