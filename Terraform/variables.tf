@@ -3,7 +3,7 @@ variable "username" {
   type = list(string)
   # Input Validation
   validation {
-    condition = length(var.username) <=12
+    condition     = length(var.username) <= 12
     error_message = "The number of usernames must be 12 or fewer"
   }
 }

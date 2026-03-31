@@ -41,10 +41,10 @@ resource "aws_instance" "data_server" {
 }
 
 resource "aws_instance" "appServer" {
-  ami           = "ami-123456"
-  instance_type = var.server_config.instance_type
+  ami                    = "ami-123456"
+  instance_type          = var.server_config.instance_type
   vpc_security_group_ids = [aws_security_group.tf_firewall.id]
-  key_name = appserver.pem
+  key_name               = appserver.pem
 
   tags = {
     Name = var.server_config.name
@@ -52,21 +52,21 @@ resource "aws_instance" "appServer" {
 
   #Remote Provisioner
   connection {
-    host = self.public_ip
-    type = "ssh"
-    user = "ec2-user"
+    host        = self.public_ip
+    type        = "ssh"
+    user        = "ec2-user"
     private_key = file("./privatekeys/appserver.pem")
   }
   provisioner "remote-exec" {
-    inline = [ 
+    inline = [
       "sudo yum install -y nginx",
       "sudo systemctl start nginx"
-     ]
-     on_failure = continue
+    ]
+    on_failure = continue
   }
 
-# Local Provisioner
-  provisioner "local-exec" {  
+  # Local Provisioner
+  provisioner "local-exec" {
     command = <<-EOT
       echo "Starting the process" > ./result.txt
       echo "Instance IP: ${self.public_ip}" >> ./result.txt
@@ -75,21 +75,21 @@ resource "aws_instance" "appServer" {
     EOT
   }
   provisioner "local-exec" {
-    when    = destroy
-    command = "echo 'Instance was destroyed at $(date)' >> ./result.txt"
+    when       = destroy
+    command    = "echo 'Instance was destroyed at $(date)' >> ./result.txt"
     on_failure = continue
   }
 
   lifecycle {
-   # Pre-Condition
+    # Pre-Condition
     precondition {
-      condition = contains(["m5.large", "r5.xlarge"], var.server_config.instance_type)
+      condition     = contains(["m5.large", "r5.xlarge"], var.server_config.instance_type)
       error_message = "Only m5.large , r5.xlarge types are allowed"
     }
 
     #Post-Condition
     postcondition {
-      condition = self.public_ip != null && self.public_ip != ""
+      condition     = self.public_ip != null && self.public_ip != ""
       error_message = "EC2 must have public IP"
     }
   }
