@@ -19,6 +19,7 @@ variable "env" {
 }
 
 variable "instance_name" {}
+variable "instance_type" {}
 
 variable "ami_id" {
   type = map(string) # Changed 'any' to 'string' for better validation

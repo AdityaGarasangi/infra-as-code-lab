@@ -20,11 +20,10 @@ ami_id = {
   "us-west-2"  = "ami-0b20a6f09484773af",
   "ap-south-2" = "ami-0e1d06225679bc1c5"
 }
-instance_type = "m5.large"
 region        = "us-east-1"
+instance_type = "t3.micro"
 
-
-server_config {
+server_config = {
     name          = "app-server"
     instance_type = "t2.micro"
     volume_size   = 20
