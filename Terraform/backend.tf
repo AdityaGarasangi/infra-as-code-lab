@@ -7,7 +7,7 @@
 terraform {
   backend "s3" {
     bucket = "infra-iac-bucket"
-    key = "/key/infra-iac-bucket.pem"
+    key = "terraform.tfstate"
     region = "us-east-1"
   }
 }
