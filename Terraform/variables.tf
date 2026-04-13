@@ -1,5 +1,6 @@
 # --- IAM Users ---
 variable "username" {
+  sensitive = true
   type = list(string)
   # Input Validation
   validation {
