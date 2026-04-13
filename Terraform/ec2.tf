@@ -23,6 +23,7 @@ resource "aws_instance" "web_server" {
   }
 }
 
+/*
 resource "aws_instance" "data_server" {
   ami           = data.aws_ami.amazon_linux.id
   instance_type = local.instance_type
@@ -38,6 +39,15 @@ resource "aws_instance" "data_server" {
     ignore_changes = [tags]
   }
 
+}
+*/
+
+# Removed Blocks
+removed {
+  from = aws_instance.data_server
+  lifecycle {
+    destroy = false
+  }
 }
 
 resource "aws_instance" "appServer" {
